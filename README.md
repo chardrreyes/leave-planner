@@ -1,2 +1,5 @@
 # LeavePlanner
-Clone repository, open in visual studio => run
+- Clone repository
+- Run LeavePlanner.sln
+- Be sure that to set WebApplication as Startup Project
+- Run the project
