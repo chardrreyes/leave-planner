@@ -1,0 +1,12 @@
+.ng-ml-1 {
+    /*margin-left: 1em;*/
+}
+.form-box {
+    padding: 1rem;
+}
+.form-box > mat-form-field {
+    width: 100%;
+}
+.full-width {
+    width: 100%;
+}

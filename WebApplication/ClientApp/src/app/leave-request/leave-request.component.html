@@ -1,0 +1,82 @@
+<div fxlayout="row" fxLayoutAlign="space-around center" style="width:100vw;height:80vh">
+
+  <mat-card class="example-card" style="max-width: 40em">
+    <mat-card-header>
+      <mat-card-title>Leave Form</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+
+
+      <div class="flex-container" fxLayout="row wrap" [formGroup]="leaveForm">
+        <div class="form-box" fxFlex="1 0 22em">
+          <mat-form-field appearance="fill" class="ng-ml-1">
+            <mat-label>Applicant</mat-label>
+            <mat-select formControlName="applicant" (selectionChange)="selectEmployee($event)">
+              <mat-option  *ngFor="let applicantInfo of employee" [value]="applicantInfo.employeeId">{{applicantInfo.name}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="form-box" fxFlex="1 0 22em">
+          <mat-form-field appearance="fill" class="ng-ml-1">
+            <mat-label>Manager</mat-label>
+            <mat-select formControlName="manager" (selectionChange)="selectManager($event)">
+              <mat-option *ngFor="let manager of employee" [value]="manager.employeeId">{{manager.name}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="form-box" fxFlex="1 0 22em">
+          <mat-form-field appearance="fill" class="ng-ml-1">
+            <mat-label>Start date</mat-label>
+            <input formControlName="startDate" matInput [matDatepicker]="startDate" (dateChange)="startDateChange($event)">
+            <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
+            <mat-datepicker #startDate></mat-datepicker>
+          </mat-form-field>
+        </div>
+
+        <div class="form-box" fxFlex="1 0 22em">
+          <mat-form-field appearance="fill" class="ng-ml-1">
+            <mat-label>End date</mat-label>
+            <input formControlName="endDate" matInput [matDatepicker]="endDate" (dateChange)="endDateChange($event)">
+            <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
+            <mat-datepicker #endDate></mat-datepicker>
+          </mat-form-field>
+        </div>
+
+        <div class="form-box" fxFlex="1 0 22em">
+          <mat-form-field appearance="fill" class="ng-ml-1">
+            <mat-label>Return date</mat-label>
+            <input formControlName="returnDate" matInput [matDatepicker]="returnDate" (dateChange)="returnDateChange($event)">
+            <mat-datepicker-toggle matSuffix [for]="returnDate"></mat-datepicker-toggle>
+            <mat-datepicker #returnDate></mat-datepicker>
+          </mat-form-field>
+        </div>
+
+        <div class="form-box" fxFlex="1 0 22em">
+          <mat-form-field appearance="fill">
+            <mat-label>Number of days</mat-label>
+            <input formControlName="numberOfDays" type="number" matInput >
+          </mat-form-field>
+        </div>
+
+        <div class="form-box full-width">
+          <mat-form-field appearance="fill">
+            <mat-label>General Comments</mat-label>
+            <textarea matInput formControlName="generalComments" maxlength="500" #input></textarea>
+            <mat-hint align="start">Max 500 characters {{input.value?.length || 0}}/500</mat-hint>
+          </mat-form-field>
+        </div>
+
+      </div>
+
+
+
+    </mat-card-content>
+
+    <mat-card-actions align="center">
+      <button mat-raised-button color="primary" (click)="submitLeave()">Submit</button>
+      <button mat-stroked-button (click)="cancelApplication()">Cancel</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
